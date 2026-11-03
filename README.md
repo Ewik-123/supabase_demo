@@ -1,2 +1,2 @@
 # supabase_demo
-No sabo
+Demo de conexión Python cnon supabase
