@@ -33,7 +33,7 @@ class ModelContactos:
         return response.data
 
     def borrarContacto(self,id_contacto:int):
-        response = self.supabase.table("Contactos").delete("*").eq(id_contacto).execute()
+        response = self.supabase.table("Contactos").delete().eq("id_contacto", id_contacto).execute()
         return response.data
 
     def actualizarContacto(self,id_contacto,nombre,email,telefono):
@@ -48,6 +48,6 @@ if __name__ == "__main__":
     model_contactos = ModelContactos()
     print(model_contactos.obtenerContactos())
     print(model_contactos.buscarContacto(15))
-    print(model_contactos.insertarContacto())
-    print(model_contactos.borrarContacto())
-    print(model_contactos.actualizarContacto())
+    print(model_contactos.insertarContacto("Araceli", "ara@email.com", "67676767"))
+    print(model_contactos.borrarContacto(11))
+    print(model_contactos.actualizarContacto("1","Wicho","wicho@email.com", "90676767"))
