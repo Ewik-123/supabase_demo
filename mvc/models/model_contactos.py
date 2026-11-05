@@ -25,12 +25,16 @@ class ModelContactos:
         return response.data
 
     def insertarContacto(self,nombre,email,telefono):
-        response = self.supabase.table("Contactos").insert({
+        try:
+            data = {   
             "nombre":nombre,
             "email":email,
             "telefono": telefono
-        }).execute()
-        return response.data
+        }
+            response = self.supabase.table("Contactos").insert(data).execute()  
+            return response.data
+        except Exception as error:
+            print(f"ERROR 103: {error.args[0]}")
 
     def borrarContacto(self,id_contacto:int):
         response = self.supabase.table("Contactos").delete().eq("id_contacto", id_contacto).execute()
