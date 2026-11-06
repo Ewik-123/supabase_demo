@@ -8,7 +8,10 @@ class Contactos:
     def GET(self):
 
         model_contactos = ModelContactos()
+        #Almacena en datos los registros recibidos en Supabase
+        datos = model_contactos.obtenerContactos()
 
-        print (model_contactos.obtenerContactos())
+        print (datos)
 
-        return render.contactos() #type: ignore
+        #Envia a contactos.html los datos en supabase
+        return render.contactos(datos) #type: ignore
